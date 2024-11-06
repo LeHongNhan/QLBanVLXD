@@ -53,6 +53,12 @@
             this.gcDanhSach = new DevExpress.XtraEditors.GroupControl();
             this.gcDS = new DevExpress.XtraGrid.GridControl();
             this.gridDS = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaSanPham = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenSanPham = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonGia = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoLuongTon = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MoTa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaNhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -130,6 +136,7 @@
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(68, 32);
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // toolStripSeparator1
             // 
@@ -143,6 +150,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(70, 32);
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -288,9 +296,76 @@
             // 
             // gridDS
             // 
+            this.gridDS.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.MaSanPham,
+            this.TenSanPham,
+            this.DonGia,
+            this.SoLuongTon,
+            this.MoTa,
+            this.MaNhaCungCap});
             this.gridDS.GridControl = this.gcDS;
             this.gridDS.Name = "gridDS";
             this.gridDS.Click += new System.EventHandler(this.gridDS_Click);
+            // 
+            // MaSanPham
+            // 
+            this.MaSanPham.Caption = "Mã sản phẩm";
+            this.MaSanPham.FieldName = "MaSanPham";
+            this.MaSanPham.MinWidth = 25;
+            this.MaSanPham.Name = "MaSanPham";
+            this.MaSanPham.Visible = true;
+            this.MaSanPham.VisibleIndex = 0;
+            this.MaSanPham.Width = 94;
+            // 
+            // TenSanPham
+            // 
+            this.TenSanPham.Caption = "Tên sản phẩm";
+            this.TenSanPham.FieldName = "TenSanPham";
+            this.TenSanPham.MinWidth = 25;
+            this.TenSanPham.Name = "TenSanPham";
+            this.TenSanPham.Visible = true;
+            this.TenSanPham.VisibleIndex = 1;
+            this.TenSanPham.Width = 94;
+            // 
+            // DonGia
+            // 
+            this.DonGia.Caption = "Đơn giá";
+            this.DonGia.FieldName = "DonGia";
+            this.DonGia.MinWidth = 25;
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Visible = true;
+            this.DonGia.VisibleIndex = 2;
+            this.DonGia.Width = 94;
+            // 
+            // SoLuongTon
+            // 
+            this.SoLuongTon.Caption = "Số lượng tồn";
+            this.SoLuongTon.FieldName = "SoLuongTon";
+            this.SoLuongTon.MinWidth = 25;
+            this.SoLuongTon.Name = "SoLuongTon";
+            this.SoLuongTon.Visible = true;
+            this.SoLuongTon.VisibleIndex = 3;
+            this.SoLuongTon.Width = 94;
+            // 
+            // MoTa
+            // 
+            this.MoTa.Caption = "Mô tả";
+            this.MoTa.FieldName = "MoTa";
+            this.MoTa.MinWidth = 25;
+            this.MoTa.Name = "MoTa";
+            this.MoTa.Visible = true;
+            this.MoTa.VisibleIndex = 4;
+            this.MoTa.Width = 94;
+            // 
+            // MaNhaCungCap
+            // 
+            this.MaNhaCungCap.Caption = "Mã nhà cung cấp";
+            this.MaNhaCungCap.FieldName = "MaNhaCungCap";
+            this.MaNhaCungCap.MinWidth = 25;
+            this.MaNhaCungCap.Name = "MaNhaCungCap";
+            this.MaNhaCungCap.Visible = true;
+            this.MaNhaCungCap.VisibleIndex = 5;
+            this.MaNhaCungCap.Width = 94;
             // 
             // frmQLSanPham
             // 
@@ -342,5 +417,11 @@
         private DevExpress.XtraGrid.GridControl gcDS;
         private DevExpress.XtraGrid.Views.Grid.GridView gridDS;
         private System.Windows.Forms.ComboBox cboNhaCungCap;
+        private DevExpress.XtraGrid.Columns.GridColumn MaSanPham;
+        private DevExpress.XtraGrid.Columns.GridColumn TenSanPham;
+        private DevExpress.XtraGrid.Columns.GridColumn DonGia;
+        private DevExpress.XtraGrid.Columns.GridColumn SoLuongTon;
+        private DevExpress.XtraGrid.Columns.GridColumn MoTa;
+        private DevExpress.XtraGrid.Columns.GridColumn MaNhaCungCap;
     }
 }

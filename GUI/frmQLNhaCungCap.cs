@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using BLL;
+using DevExpress.XtraEditors;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +15,12 @@ namespace GUI
 {
     public partial class frmQLNhaCungCap : DevExpress.XtraEditors.XtraForm
     {
+        BLLNhaCungCap bllNCC = new BLLNhaCungCap();
         public frmQLNhaCungCap()
         {
             InitializeComponent();
             _them = false;
+            loadInfoNCC();
         }
         bool _them;
         void enableCacControl()
@@ -48,7 +52,11 @@ namespace GUI
         {
 
         }
-
+        void loadInfoNCC()
+        {
+            List<NhaCungCap> lstNhaCungCap = bllNCC.GetNhaCungCaps();
+            gcDS.DataSource = lstNhaCungCap;
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
@@ -58,8 +66,9 @@ namespace GUI
         {
             if (gridDS.RowCount > 0 && !_them)
             {
-                _them = false;
 
+
+                _them = false;
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
             }
@@ -94,6 +103,11 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             xuLyControl();
+        }
+
+        private void gcDS_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQLNhaCungCap));
             this.gridDS = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.MaNhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TenNhaCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DiaChi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.SoDienThoai = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LoaiSanPhamCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DonViTinhSanPhamCungCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gcDS = new DevExpress.XtraGrid.GridControl();
             this.txtDiaChi = new System.Windows.Forms.RichTextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
@@ -64,9 +71,87 @@
             // 
             // gridDS
             // 
+            this.gridDS.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.MaNhaCungCap,
+            this.TenNhaCungCap,
+            this.DiaChi,
+            this.Email,
+            this.SoDienThoai,
+            this.LoaiSanPhamCungCap,
+            this.DonViTinhSanPhamCungCap});
             this.gridDS.GridControl = this.gcDS;
             this.gridDS.Name = "gridDS";
             this.gridDS.Click += new System.EventHandler(this.gridDS_Click);
+            // 
+            // MaNhaCungCap
+            // 
+            this.MaNhaCungCap.Caption = "Mã nhà cung cấp";
+            this.MaNhaCungCap.FieldName = "MaNhaCungCap";
+            this.MaNhaCungCap.MinWidth = 25;
+            this.MaNhaCungCap.Name = "MaNhaCungCap";
+            this.MaNhaCungCap.Visible = true;
+            this.MaNhaCungCap.VisibleIndex = 0;
+            this.MaNhaCungCap.Width = 94;
+            // 
+            // TenNhaCungCap
+            // 
+            this.TenNhaCungCap.Caption = "Tên nhà cung cấp";
+            this.TenNhaCungCap.FieldName = "TenNhaCungCap";
+            this.TenNhaCungCap.MinWidth = 25;
+            this.TenNhaCungCap.Name = "TenNhaCungCap";
+            this.TenNhaCungCap.Visible = true;
+            this.TenNhaCungCap.VisibleIndex = 1;
+            this.TenNhaCungCap.Width = 94;
+            // 
+            // DiaChi
+            // 
+            this.DiaChi.Caption = "Địa chỉ";
+            this.DiaChi.FieldName = "DiaChi";
+            this.DiaChi.MinWidth = 25;
+            this.DiaChi.Name = "DiaChi";
+            this.DiaChi.Visible = true;
+            this.DiaChi.VisibleIndex = 2;
+            this.DiaChi.Width = 94;
+            // 
+            // Email
+            // 
+            this.Email.Caption = "Email";
+            this.Email.FieldName = "Email";
+            this.Email.MinWidth = 25;
+            this.Email.Name = "Email";
+            this.Email.Visible = true;
+            this.Email.VisibleIndex = 3;
+            this.Email.Width = 94;
+            // 
+            // SoDienThoai
+            // 
+            this.SoDienThoai.Caption = "Số điện thoại";
+            this.SoDienThoai.FieldName = "SoDienThoai";
+            this.SoDienThoai.MinWidth = 25;
+            this.SoDienThoai.Name = "SoDienThoai";
+            this.SoDienThoai.Visible = true;
+            this.SoDienThoai.VisibleIndex = 4;
+            this.SoDienThoai.Width = 94;
+            // 
+            // LoaiSanPhamCungCap
+            // 
+            this.LoaiSanPhamCungCap.Caption = "Loại sản phẩm cung cấp";
+            this.LoaiSanPhamCungCap.FieldName = "LoaiSanPhamCungCap";
+            this.LoaiSanPhamCungCap.MinWidth = 25;
+            this.LoaiSanPhamCungCap.Name = "LoaiSanPhamCungCap";
+            this.LoaiSanPhamCungCap.Visible = true;
+            this.LoaiSanPhamCungCap.VisibleIndex = 5;
+            this.LoaiSanPhamCungCap.Width = 94;
+            // 
+            // DonViTinhSanPhamCungCap
+            // 
+            this.DonViTinhSanPhamCungCap.Caption = "Đơn vị tính";
+            this.DonViTinhSanPhamCungCap.FieldName = "DonViTinhSanPhamCungCap";
+            this.DonViTinhSanPhamCungCap.MinWidth = 25;
+            this.DonViTinhSanPhamCungCap.Name = "DonViTinhSanPhamCungCap";
+            this.DonViTinhSanPhamCungCap.Visible = true;
+            this.DonViTinhSanPhamCungCap.VisibleIndex = 6;
+            this.DonViTinhSanPhamCungCap.Width = 94;
             // 
             // gcDS
             // 
@@ -78,6 +163,7 @@
             this.gcDS.TabIndex = 0;
             this.gcDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDS});
+            this.gcDS.Click += new System.EventHandler(this.gcDS_Click);
             // 
             // txtDiaChi
             // 
@@ -336,5 +422,12 @@
         private System.Windows.Forms.ToolStripButton btnLuu;
         private System.Windows.Forms.ToolStripButton btnHuy;
         private DevExpress.XtraEditors.GroupControl gcDanhSach;
+        private DevExpress.XtraGrid.Columns.GridColumn MaNhaCungCap;
+        private DevExpress.XtraGrid.Columns.GridColumn TenNhaCungCap;
+        private DevExpress.XtraGrid.Columns.GridColumn DiaChi;
+        private DevExpress.XtraGrid.Columns.GridColumn Email;
+        private DevExpress.XtraGrid.Columns.GridColumn SoDienThoai;
+        private DevExpress.XtraGrid.Columns.GridColumn LoaiSanPhamCungCap;
+        private DevExpress.XtraGrid.Columns.GridColumn DonViTinhSanPhamCungCap;
     }
 }

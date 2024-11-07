@@ -199,5 +199,10 @@ namespace GUI
                 xuLyControl();
             }
         }
+
+        private void frmQLSanPham_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

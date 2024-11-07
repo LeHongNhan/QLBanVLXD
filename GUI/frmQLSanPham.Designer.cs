@@ -377,6 +377,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "frmQLSanPham";
             this.Text = "Quản lý sản phẩm";
+            this.Load += new System.EventHandler(this.frmQLSanPham_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();

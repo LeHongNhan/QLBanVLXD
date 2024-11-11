@@ -44,6 +44,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.txtDonViTinh = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSPCungCap = new System.Windows.Forms.TextBox();
             this.txtTenNCC = new System.Windows.Forms.TextBox();
@@ -159,7 +161,7 @@
             this.gcDS.Location = new System.Drawing.Point(2, 28);
             this.gcDS.MainView = this.gridDS;
             this.gcDS.Name = "gcDS";
-            this.gcDS.Size = new System.Drawing.Size(1140, 545);
+            this.gcDS.Size = new System.Drawing.Size(1140, 532);
             this.gcDS.TabIndex = 0;
             this.gcDS.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDS});
@@ -183,7 +185,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(428, 107);
+            this.label6.Location = new System.Drawing.Point(423, 107);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 16);
             this.label6.TabIndex = 2;
@@ -201,7 +203,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(387, 43);
+            this.label3.Location = new System.Drawing.Point(431, 47);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 2;
@@ -209,6 +211,8 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.txtDonViTinh);
+            this.groupControl2.Controls.Add(this.label7);
             this.groupControl2.Controls.Add(this.txtDiaChi);
             this.groupControl2.Controls.Add(this.txtEmail);
             this.groupControl2.Controls.Add(this.txtSoDienThoai);
@@ -224,9 +228,25 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.Location = new System.Drawing.Point(0, 35);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1144, 165);
+            this.groupControl2.Size = new System.Drawing.Size(1144, 178);
             this.groupControl2.TabIndex = 14;
             this.groupControl2.Text = "Thông tin";
+            // 
+            // txtDonViTinh
+            // 
+            this.txtDonViTinh.Location = new System.Drawing.Point(131, 145);
+            this.txtDonViTinh.Name = "txtDonViTinh";
+            this.txtDonViTinh.Size = new System.Drawing.Size(241, 23);
+            this.txtDonViTinh.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(52, 148);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Đơn vị tính:";
             // 
             // txtEmail
             // 
@@ -255,6 +275,7 @@
             this.txtMaNCC.Name = "txtMaNCC";
             this.txtMaNCC.Size = new System.Drawing.Size(241, 23);
             this.txtMaNCC.TabIndex = 3;
+            this.txtMaNCC.TextChanged += new System.EventHandler(this.txtMaNCC_TextChanged);
             // 
             // label4
             // 
@@ -350,6 +371,7 @@
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(68, 32);
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
             // 
@@ -365,9 +387,9 @@
             // 
             this.gcDanhSach.Controls.Add(this.gcDS);
             this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gcDanhSach.Location = new System.Drawing.Point(0, 196);
+            this.gcDanhSach.Location = new System.Drawing.Point(0, 209);
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1144, 575);
+            this.gcDanhSach.Size = new System.Drawing.Size(1144, 562);
             this.gcDanhSach.TabIndex = 13;
             this.gcDanhSach.Text = "Danh sách nhà cung cấp";
             // 
@@ -429,5 +451,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn SoDienThoai;
         private DevExpress.XtraGrid.Columns.GridColumn LoaiSanPhamCungCap;
         private DevExpress.XtraGrid.Columns.GridColumn DonViTinhSanPhamCungCap;
+        private System.Windows.Forms.TextBox txtDonViTinh;
+        private System.Windows.Forms.Label label7;
     }
 }

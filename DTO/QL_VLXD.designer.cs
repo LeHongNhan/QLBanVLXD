@@ -57,7 +57,7 @@ namespace DTO
     #endregion
 		
 		public QL_VLXDDataContext() : 
-				base(global::DTO.Properties.Settings.Default.QL_VLXDConnectionString, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QL_VLXDConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}

@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace GUI
             InitializeComponent();
             _them = false;
             loadInfoNCC();
+            gridDS.OptionsBehavior.Editable = false;
         }
         bool _them;
         void enableCacControl()
@@ -32,6 +34,7 @@ namespace GUI
             txtDiaChi.Enabled = true;
             txtEmail.Enabled = true;
             txtSPCungCap.Enabled = true;
+            txtDonViTinh.Enabled = true;
         }
         void xuLyControl()
         {
@@ -42,11 +45,17 @@ namespace GUI
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             txtMaNCC.Enabled = false;
-            txtTenNCC.Enabled = false;
-            txtSoDienThoai.Enabled = false;
+            txtTenNCC.Text = string.Empty;
+            txtSoDienThoai.Text = string.Empty;
             txtDiaChi.Text = string.Empty;
             txtEmail.Text = string.Empty;
             txtSPCungCap.Text = string.Empty;
+            txtDonViTinh.Text = string.Empty;
+        }
+        string MaNCCtudong()
+        {
+            int soTT = bllNCC.GetNhaCungCaps().Count + 1;
+            return "NCC" + soTT.ToString("D3");
         }
         private void frmQLNhaCungCap_Load(object sender, EventArgs e)
         {
@@ -66,22 +75,32 @@ namespace GUI
         {
             if (gridDS.RowCount > 0 && !_them)
             {
-
-
                 _them = false;
+
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
+                btnLuu.Enabled = true;
+                txtMaNCC.Text = gridDS.GetFocusedRowCellValue("MaNhaCungCap").ToString();
+                txtTenNCC.Text = gridDS.GetFocusedRowCellValue("TenNhaCungCap").ToString();
+                txtSPCungCap.Text = gridDS.GetFocusedRowCellValue("LoaiSanPhamCungCap").ToString();
+                txtEmail.Text = gridDS.GetFocusedRowCellValue("Email").ToString();
+                txtSoDienThoai.Text = gridDS.GetFocusedRowCellValue("SoDienThoai").ToString();
+                txtDiaChi.Text = gridDS.GetFocusedRowCellValue("DiaChi").ToString();
+                txtDonViTinh.Text = gridDS.GetFocusedRowCellValue("DonViTinhSanPhamCungCap").ToString();
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             _them = true;
-            txtTenNCC.Text = string.Empty;
+            txtMaNCC.Text = MaNCCtudong();
+            txtTenNCC.Text= string.Empty;
             txtDiaChi.Text = string.Empty;
             txtEmail.Text= string.Empty;
             txtSoDienThoai.Text = string.Empty;
             txtSPCungCap.Text = string.Empty;
+            txtDonViTinh.Text = string.Empty;
+            MaNCCtudong();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             enableCacControl();
@@ -97,7 +116,12 @@ namespace GUI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Xóa nhà cung cấp " + txtMaNCC.Text + "?", "Xóa nhà cung cấp", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
+            {
+                bllNCC.Xoa(txtMaNCC.Text);
+                loadInfoNCC();
+                xuLyControl();
+            }
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -106,6 +130,36 @@ namespace GUI
         }
 
         private void gcDS_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (_them)
+            {
+                NhaCungCap ncc = new NhaCungCap();
+                ncc.MaNhaCungCap = txtMaNCC.Text;
+                ncc.TenNhaCungCap = txtTenNCC.Text;
+                ncc.DiaChi = txtDiaChi.Text;
+                ncc.Email = txtEmail.Text;
+                ncc.SoDienThoai = txtSoDienThoai.Text;
+                ncc.LoaiSanPhamCungCap = txtSPCungCap.Text;
+                ncc.DonViTinhSanPhamCungCap = txtDonViTinh.Text;
+                bllNCC.Them(ncc);
+                MessageBox.Show("Thêm nhà cung cấp thành công!");
+            }
+            else
+            {
+                
+                bllNCC.CapNhat(txtMaNCC.Text, txtTenNCC.Text, txtDiaChi.Text, txtEmail.Text, txtSoDienThoai.Text, txtSPCungCap.Text, txtDonViTinh.Text);
+                MessageBox.Show("Cập nhật thành công!");
+            }
+            xuLyControl();
+            loadInfoNCC();
+        }
+
+        private void txtMaNCC_TextChanged(object sender, EventArgs e)
         {
 
         }

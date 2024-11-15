@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraEditors;
+﻿using BLL;
+using DevExpress.XtraEditors;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -111,6 +113,61 @@ namespace GUI
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmHoaDon_Load(object sender, EventArgs e)
+        {
+            bllDonHang = new BLLDonHang();
+            loadDSDonHang();
+        }
+        BLLDonHang bllDonHang;
+        void loadDSDonHang()
+        {
+            List<dynamic>  donHangList = bllDonHang.loadDonHangGC();
+            gcDanhSach.DataSource = donHangList;
+        }
+        bool _them = false;
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            _them = true;
+            enableCacControl();
+            btnIn.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            tabDanhSach.SelectedTabPage = pageChiTiet;
+        }
+        void enableCacControl()
+        {
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+            cboKhachHang.Enabled = true;
+            cboTrangThai.Enabled = true;
+            dtpNgayLap.Enabled = true;
+            btnThemMoi.Enabled = true;
+        }
+
+        private void btnThemMoi_Click_1(object sender, EventArgs e)
+        {
+            frmQLKhachHang f = new frmQLKhachHang();
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowDialog();
+        }
+        void xuLyControl()
+        {
+            _them = false;
+            btnThem.Enabled = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+            btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+            cboKhachHang.Enabled = false;
+            cboTrangThai.Enabled = false;
+            dtpNgayLap.Enabled = false;
+            btnThemMoi.Text = string.Empty;
+        }
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            xuLyControl();
         }
     }
 }

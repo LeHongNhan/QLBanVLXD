@@ -20,5 +20,9 @@ namespace BLL
         {
             return daldonhang.LoadDonHang();
         }
+        public List<dynamic> loadDonHangGC()
+        {
+            return daldonhang.loadDonHangGC();
+        }
     }
 }

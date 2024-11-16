@@ -20,6 +20,12 @@ namespace DAL
             return vlxd.NhanViens.ToList();
         }
 
+        public NhanVien getNhanVien(string taiKhoan, string matKhau)
+        {
+            NhanVien n = vlxd.NhanViens.FirstOrDefault(nv => nv.SoDienThoai == taiKhoan);
+            return (n != null && BCrypt.Net.BCrypt.Verify(matKhau, n.MatKhau)) ? n : null;
+        }
+
 
         public bool KiemTraDangNhap(string soDienThoai, string matKhau, out string chucVu)
         {

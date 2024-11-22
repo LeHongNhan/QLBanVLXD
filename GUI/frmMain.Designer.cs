@@ -152,7 +152,7 @@
             this.btnDonHang.Id = 9;
             this.btnDonHang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDonHang.ImageOptions.SvgImage")));
             this.btnDonHang.Name = "btnDonHang";
-            this.btnDonHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDonHang_ItemClick);
+            this.btnDonHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // btnThongKe
             // 

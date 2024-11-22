@@ -51,7 +51,7 @@ namespace GUI
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmQLKhachHang f = new frmQLKhachHang();
+            frmHoaDon f = new frmHoaDon();
             f.ShowDialog();
         }
     }

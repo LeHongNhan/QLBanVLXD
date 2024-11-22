@@ -23,6 +23,7 @@ namespace GUI
             InitializeComponent();
             _them = false;
             LoadNhanVien();
+            xuLyControl();
             gridDS.OptionsBehavior.Editable = false;
             gridDS.Click += GridDS_Click;
         }
@@ -35,8 +36,6 @@ namespace GUI
 
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                btnLuu.Enabled = true;
-                btnHuy.Enabled = true;
 
                 txtMaNhanVien.Text = gridDS.GetFocusedRowCellValue("MaNhanVien").ToString();
                 txtTenNhanVien.Text = gridDS.GetFocusedRowCellValue("TenNhanVien").ToString();
@@ -45,7 +44,6 @@ namespace GUI
                 txtSoDienThoai.Text = gridDS.GetFocusedRowCellValue("SoDienThoai").ToString();
                 txtDiaChi.Text = gridDS.GetFocusedRowCellValue("DiaChi").ToString();
 
-                // Không hiển thị mật khẩu trong TextBox
                 txtMatKhau.Text = "********";
             }
         }
@@ -57,7 +55,7 @@ namespace GUI
 
         private void frmQLNhanVien_Load(object sender, EventArgs e)
         {
-            xuLyControl();
+            
         }
         void xuLyControl()
         {
@@ -68,6 +66,12 @@ namespace GUI
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
             txtMaNhanVien.Enabled = false;
+            txtTenNhanVien.Enabled = false;
+            txtDiaChi.Enabled = false;
+            txtEmail.Enabled = false;
+            txtSoDienThoai.Enabled = false;
+            txtMatKhau.Enabled = false;
+            txtChucVu.Enabled = false;
 
             txtTenNhanVien.Text = string.Empty;
             txtChucVu.Text = string.Empty;
@@ -93,13 +97,11 @@ namespace GUI
 
         private bool KiemTraEmail(string email)
         {
-            // Kiểm tra email chứa ký tự "@" và ".com"
             return email.Contains("@") && email.EndsWith(".com");
         }
 
         private bool KiemTraSDT(string phoneNumber)
         {
-            // Kiểm tra độ dài và chỉ chứa ký tự số
             return phoneNumber.Length == 10 && phoneNumber.All(char.IsDigit);
         }
         void LoadNhanVien()
@@ -149,7 +151,6 @@ namespace GUI
                 return;
             }
 
-            // Kiểm tra số điện thoại
             if (!KiemTraSDT(txtSoDienThoai.Text))
             {
                 MessageBox.Show("Số điện thoại không hợp lệ! Vui lòng đúng số điện thoại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

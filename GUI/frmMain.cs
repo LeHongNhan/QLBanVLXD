@@ -48,5 +48,11 @@ namespace GUI
             frmQLNhanVien f = new frmQLNhanVien();
             f.ShowDialog();
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmQLKhachHang f = new frmQLKhachHang();
+            f.ShowDialog();
+        }
     }
 }

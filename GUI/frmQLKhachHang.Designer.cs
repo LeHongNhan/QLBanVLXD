@@ -54,9 +54,9 @@
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtTenNhanVien = new System.Windows.Forms.TextBox();
+            this.txtTenKhachHang = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtMaNV = new System.Windows.Forms.TextBox();
+            this.txtMaKhachHang = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
@@ -76,6 +76,7 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(71, 32);
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // toolStripSeparator1
             // 
@@ -89,6 +90,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(70, 32);
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -97,6 +99,7 @@
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(69, 32);
             this.btnSua.Text = "Sửa";
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -105,6 +108,7 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(84, 32);
             this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // toolStrip1
             // 
@@ -131,6 +135,7 @@
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(68, 32);
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThoat
             // 
@@ -140,6 +145,7 @@
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(86, 32);
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // gcDanhSach
             // 
@@ -243,9 +249,9 @@
             this.groupControl2.Controls.Add(this.txtSoDienThoai);
             this.groupControl2.Controls.Add(this.label6);
             this.groupControl2.Controls.Add(this.label5);
-            this.groupControl2.Controls.Add(this.txtTenNhanVien);
+            this.groupControl2.Controls.Add(this.txtTenKhachHang);
             this.groupControl2.Controls.Add(this.label3);
-            this.groupControl2.Controls.Add(this.txtMaNV);
+            this.groupControl2.Controls.Add(this.txtMaKhachHang);
             this.groupControl2.Controls.Add(this.label2);
             this.groupControl2.Controls.Add(this.label1);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -273,7 +279,7 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(477, 101);
+            this.txtDiaChi.Location = new System.Drawing.Point(493, 104);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(283, 56);
             this.txtDiaChi.TabIndex = 4;
@@ -281,14 +287,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(477, 40);
+            this.txtEmail.Location = new System.Drawing.Point(493, 43);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 23);
             this.txtEmail.TabIndex = 3;
             // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(477, 72);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(493, 75);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(283, 23);
             this.txtSoDienThoai.TabIndex = 3;
@@ -311,12 +317,12 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Số điện thoại";
             // 
-            // txtTenNhanVien
+            // txtTenKhachHang
             // 
-            this.txtTenNhanVien.Location = new System.Drawing.Point(137, 72);
-            this.txtTenNhanVien.Name = "txtTenNhanVien";
-            this.txtTenNhanVien.Size = new System.Drawing.Size(241, 23);
-            this.txtTenNhanVien.TabIndex = 3;
+            this.txtTenKhachHang.Location = new System.Drawing.Point(137, 72);
+            this.txtTenKhachHang.Name = "txtTenKhachHang";
+            this.txtTenKhachHang.Size = new System.Drawing.Size(241, 23);
+            this.txtTenKhachHang.TabIndex = 3;
             // 
             // label3
             // 
@@ -327,12 +333,12 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Email";
             // 
-            // txtMaNV
+            // txtMaKhachHang
             // 
-            this.txtMaNV.Location = new System.Drawing.Point(137, 37);
-            this.txtMaNV.Name = "txtMaNV";
-            this.txtMaNV.Size = new System.Drawing.Size(241, 23);
-            this.txtMaNV.TabIndex = 3;
+            this.txtMaKhachHang.Location = new System.Drawing.Point(137, 37);
+            this.txtMaKhachHang.Name = "txtMaKhachHang";
+            this.txtMaKhachHang.Size = new System.Drawing.Size(241, 23);
+            this.txtMaKhachHang.TabIndex = 3;
             // 
             // label2
             // 
@@ -362,6 +368,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Name = "frmQLKhachHang";
             this.Text = "frmQLKhachHang";
+            this.Load += new System.EventHandler(this.frmQLKhachHang_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
@@ -403,9 +410,9 @@
         private System.Windows.Forms.TextBox txtSoDienThoai;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTenNhanVien;
+        private System.Windows.Forms.TextBox txtTenKhachHang;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMaNV;
+        private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

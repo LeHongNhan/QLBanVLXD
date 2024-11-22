@@ -1,4 +1,9 @@
-﻿using DevExpress.XtraEditors;
+
+﻿using BLL;
+using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DTO;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,3 +24,4 @@ namespace GUI
         }
     }
 }
+

@@ -19,5 +19,9 @@ namespace DAL
         {
             return vlxd.DonHangs.ToList();
         }
+        public List<dynamic> loadDonHangGC()
+        {
+            return vlxd.DonHangs.Select(x => new {x.MaDonHang, x.KhachHang.TenKhachHang, x.NhanVien.TenNhanVien, x.TongTien, x.NgayLap}).ToList<dynamic>();
+        }
     }
 }

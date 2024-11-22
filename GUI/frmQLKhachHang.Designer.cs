@@ -408,5 +408,6 @@
         private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+
     }
 }

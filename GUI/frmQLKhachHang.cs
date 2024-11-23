@@ -35,16 +35,20 @@ namespace GUI
             {
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-
+                btnLuu.Enabled = true;
+                btnHuy.Enabled = true;
                 txtMaKhachHang.Text = gridDS.GetFocusedRowCellValue("MaKhachHang").ToString();
                 txtTenKhachHang.Text = gridDS.GetFocusedRowCellValue("TenKhachHang").ToString();
                 txtDiaChi.Text = gridDS.GetFocusedRowCellValue("DiaChi").ToString();
                 txtEmail.Text = gridDS.GetFocusedRowCellValue("Email").ToString();
                 txtSoDienThoai.Text = gridDS.GetFocusedRowCellValue("SoDienThoai").ToString();
-
-
                 txtMatKhau.Text = "********";
             }
+        }
+
+        private void frmQLKhachHang_Load(object sender, EventArgs e)
+        {
+            xuLyControl();
         }
         void xuLyControl()
         {
@@ -54,15 +58,6 @@ namespace GUI
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
-
-            txtTenKhachHang.Enabled = false;
-            txtDiaChi.Enabled = false;
-            txtEmail.Enabled = false;
-            txtSoDienThoai.Enabled = false;
-            txtMatKhau.Enabled = false;
-
-
-
 
             txtMaKhachHang.Text = string.Empty;
             txtTenKhachHang.Text = string.Empty;
@@ -133,6 +128,10 @@ namespace GUI
             }
         }
 
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            xuLyControl();
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (!KiemTraEmail(txtEmail.Text))

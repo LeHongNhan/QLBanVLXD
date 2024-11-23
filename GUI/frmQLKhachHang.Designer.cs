@@ -279,7 +279,7 @@
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.Location = new System.Drawing.Point(495, 104);
+            this.txtDiaChi.Location = new System.Drawing.Point(493, 104);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(283, 56);
             this.txtDiaChi.TabIndex = 4;
@@ -287,14 +287,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(495, 43);
+            this.txtEmail.Location = new System.Drawing.Point(493, 43);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(283, 23);
             this.txtEmail.TabIndex = 3;
             // 
             // txtSoDienThoai
             // 
-            this.txtSoDienThoai.Location = new System.Drawing.Point(495, 75);
+            this.txtSoDienThoai.Location = new System.Drawing.Point(493, 75);
             this.txtSoDienThoai.Name = "txtSoDienThoai";
             this.txtSoDienThoai.Size = new System.Drawing.Size(283, 23);
             this.txtSoDienThoai.TabIndex = 3;
@@ -368,6 +368,7 @@
             this.Controls.Add(this.gcDanhSach);
             this.Name = "frmQLKhachHang";
             this.Text = "frmQLKhachHang";
+            this.Load += new System.EventHandler(this.frmQLKhachHang_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();

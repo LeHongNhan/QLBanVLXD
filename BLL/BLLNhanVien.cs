@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BCrypt;
 using DAL;
 using DTO;
 
@@ -49,6 +50,12 @@ namespace BLL
         public List<NhanVien> TimKiemNhanVien(string tenNhanVien)
         {
             return dalnhanvien.TimKiemNhanVien(tenNhanVien);
+        }
+        public NhanVien checkDangNhap(string taiKhoan, string matKhau)
+        {
+            NhanVien nv = new NhanVien();
+            //string mkMaHoa = BCrypt.Net.BCrypt.HashPassword(matKhau, 10);
+            return nv = dalnhanvien.getNhanVien(taiKhoan, matKhau);
         }
     }
 }

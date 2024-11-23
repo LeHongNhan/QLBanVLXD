@@ -415,5 +415,6 @@
         private System.Windows.Forms.TextBox txtMaKhachHang;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+
     }
 }

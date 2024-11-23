@@ -1,4 +1,4 @@
-﻿using BLL;
+using BLL;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DTO;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace GUI
 {
     public partial class frmQLKhachHang : DevExpress.XtraEditors.XtraForm
@@ -23,6 +24,7 @@ namespace GUI
             InitializeComponent();
             _them = false;
             LoadKhachHang();
+            xuLyControl();
             gridDS.OptionsBehavior.Editable = false;
             gridDS.Click += GridDS_Click;
         }
@@ -35,14 +37,11 @@ namespace GUI
                 btnXoa.Enabled = true;
                 btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
-
                 txtMaKhachHang.Text = gridDS.GetFocusedRowCellValue("MaKhachHang").ToString();
                 txtTenKhachHang.Text = gridDS.GetFocusedRowCellValue("TenKhachHang").ToString();
                 txtDiaChi.Text = gridDS.GetFocusedRowCellValue("DiaChi").ToString();
                 txtEmail.Text = gridDS.GetFocusedRowCellValue("Email").ToString();
                 txtSoDienThoai.Text = gridDS.GetFocusedRowCellValue("SoDienThoai").ToString();
-
-                
                 txtMatKhau.Text = "********";
             }
         }
@@ -97,7 +96,6 @@ namespace GUI
         {
             return phoneNumber.Length == 10 && phoneNumber.All(char.IsDigit);
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             _them = true;
@@ -134,7 +132,6 @@ namespace GUI
         {
             xuLyControl();
         }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (!KiemTraEmail(txtEmail.Text))
@@ -186,9 +183,15 @@ namespace GUI
             xuLyControl();
         }
 
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            xuLyControl();
+        }
+
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();
         }
     }
 }
+

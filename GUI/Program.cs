@@ -12,12 +12,18 @@ namespace GUI
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static frmMain mainForm;
+        public static frmDangNhap loginForm;
         [STAThread]
+        
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            mainForm = new frmMain();
+            loginForm = new frmDangNhap();
+            Application.Run(loginForm);
         }
     }
 }

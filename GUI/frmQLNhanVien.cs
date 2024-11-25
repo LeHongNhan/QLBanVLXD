@@ -64,7 +64,7 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
-            btnHuy.Enabled = false;
+            btnHuy.Enabled = true;
             txtMaNhanVien.Enabled = false;
             txtTenNhanVien.Enabled = false;
             txtDiaChi.Enabled = false;

@@ -53,7 +53,7 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
-            btnHuy.Enabled = false;
+            btnHuy.Enabled = true;
 
             txtTenKhachHang.Enabled = false;
             txtDiaChi.Enabled = false;

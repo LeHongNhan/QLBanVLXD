@@ -183,11 +183,6 @@ namespace GUI
             xuLyControl();
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            xuLyControl();
-        }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Close();

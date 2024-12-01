@@ -10,14 +10,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
 
 namespace GUI
 {
     public partial class frmHoaDon : DevExpress.XtraEditors.XtraForm
     {
+        BLLHoaDon bllHoaDon = new BLLHoaDon();
+        BLLSanPham bllSanPham = new BLLSanPham();
         public frmHoaDon()
         {
             InitializeComponent();
+            LoadHD();
+            LoadSP();
+
+        }
+
+        public void LoadHD()
+        {
+            List<DonHang> source = bllHoaDon.GetDonHangs();
+            gcDanhSach.DataSource = source;
+        }
+
+        public void LoadSP()
+        {
+            List<SanPham> source = bllSanPham.GetSanPhams();
+            gcSanPham.DataSource = source;
         }
 
         private void tabDanhSach_Click(object sender, EventArgs e)
@@ -168,6 +186,11 @@ namespace GUI
         private void btnHuy_Click(object sender, EventArgs e)
         {
             xuLyControl();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

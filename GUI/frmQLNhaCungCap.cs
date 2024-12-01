@@ -22,6 +22,7 @@ namespace GUI
             InitializeComponent();
             _them = false;
             loadInfoNCC();
+            xuLyControl();
             gridDS.OptionsBehavior.Editable = false;
         }
         bool _them;
@@ -43,8 +44,15 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
-            btnHuy.Enabled = false;
+            btnHuy.Enabled = true;
             txtMaNCC.Enabled = false;
+            txtTenNCC.Enabled= false;
+            txtDiaChi.Enabled= false;
+            txtSoDienThoai.Enabled= false;
+            txtEmail.Enabled= false;
+            txtDonViTinh.Enabled= false;
+            txtSPCungCap.Enabled= false;
+
             txtTenNCC.Text = string.Empty;
             txtSoDienThoai.Text = string.Empty;
             txtDiaChi.Text = string.Empty;

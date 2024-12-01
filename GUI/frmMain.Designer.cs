@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -53,9 +54,15 @@
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gControl = new DevExpress.XtraEditors.GroupControl();
+            this.galControl = new DevExpress.XtraBars.Ribbon.GalleryControl();
+            this.galleryControlClient1 = new DevExpress.XtraBars.Ribbon.GalleryControlClient();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gControl)).BeginInit();
+            this.gControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.galControl)).BeginInit();
+            this.galControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -261,21 +268,45 @@
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(962, 30);
             // 
-            // groupControl1
+            // gControl
             // 
-            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(0, 193);
-            this.groupControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(962, 353);
-            this.groupControl1.TabIndex = 2;
+            this.gControl.Controls.Add(this.galControl);
+            this.gControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gControl.Location = new System.Drawing.Point(0, 193);
+            this.gControl.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.gControl.Name = "gControl";
+            this.gControl.Size = new System.Drawing.Size(962, 353);
+            this.gControl.TabIndex = 2;
+            this.gControl.Paint += new System.Windows.Forms.PaintEventHandler(this.gControl_Paint);
+            // 
+            // galControl
+            // 
+            this.galControl.Controls.Add(this.galleryControlClient1);
+            this.galControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.galControl.Location = new System.Drawing.Point(2, 28);
+            this.galControl.Name = "galControl";
+            this.galControl.Size = new System.Drawing.Size(958, 323);
+            this.galControl.TabIndex = 0;
+            this.galControl.Text = "galleryControl1";
+            // 
+            // galleryControlClient1
+            // 
+            this.galleryControlClient1.GalleryControl = this.galControl;
+            this.galleryControlClient1.Location = new System.Drawing.Point(2, 2);
+            this.galleryControlClient1.Size = new System.Drawing.Size(933, 319);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "brick.png");
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 576);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.gControl);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -285,7 +316,10 @@
             this.Text = "Quản lý bán VLXD";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gControl)).EndInit();
+            this.gControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.galControl)).EndInit();
+            this.galControl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,7 +351,10 @@
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarMdiChildrenListItem barMdiChildrenListItem1;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl gControl;
+        private DevExpress.XtraBars.Ribbon.GalleryControl galControl;
+        private DevExpress.XtraBars.Ribbon.GalleryControlClient galleryControlClient1;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 

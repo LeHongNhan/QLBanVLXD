@@ -48,8 +48,13 @@ namespace DTO.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+<<<<<<< HEAD
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-6P25OEGD\\SQLSERVER;Initial Catalog=QL_VLXD;Integrated Security" +
             "=True;TrustServerCertificate=True")]
+=======
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HPMINHKHANG\\MKHANG;Initial Catalog=QL_VLXD;Persist Security Info=True" +
+            ";User ID=sa;Password=123;TrustServerCertificate=True")]
+>>>>>>> d0e984e1ab90c7fd50654ad9f9df81a431703718
         public string QL_VLXDConnectionString2 {
             get {
                 return ((string)(this["QL_VLXDConnectionString2"]));

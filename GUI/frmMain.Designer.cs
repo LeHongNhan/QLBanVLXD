@@ -71,7 +71,6 @@
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem,
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
@@ -162,7 +161,7 @@
             this.btnDonHang.Id = 9;
             this.btnDonHang.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDonHang.ImageOptions.SvgImage")));
             this.btnDonHang.Name = "btnDonHang";
-            this.btnDonHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            this.btnDonHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDonHang_ItemClick);
             // 
             // btnThongKe
             // 
@@ -278,7 +277,6 @@
             this.gControl.Name = "gControl";
             this.gControl.Size = new System.Drawing.Size(962, 353);
             this.gControl.TabIndex = 2;
-            this.gControl.Paint += new System.Windows.Forms.PaintEventHandler(this.gControl_Paint);
             // 
             // galControl
             // 

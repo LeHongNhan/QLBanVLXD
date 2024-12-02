@@ -84,7 +84,11 @@ namespace GUI
             frmQLKhachHang f = new frmQLKhachHang();
             f.ShowDialog();
         }
-
+        private void btnPhieuNhap_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmQLPhieuNhap f = new frmQLPhieuNhap();
+            f.ShowDialog();
+        }
         private void btnDonHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             frmHoaDon frmHoaDon = new frmHoaDon();

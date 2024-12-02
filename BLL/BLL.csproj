@@ -45,13 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLChiTietDonHang.cs" />
+    <Compile Include="BLLChiTietPhieuNhap.cs" />
     <Compile Include="BLLDonHang.cs" />
     <Compile Include="BLLHoaDon.cs" />
     <Compile Include="BLLKhachHang.cs" />
     <Compile Include="BLLNhaCungCap.cs" />
     <Compile Include="BLLNhanVien.cs" />
+    <Compile Include="BLLPhieuNhap.cs" />
     <Compile Include="BLLSanPham.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

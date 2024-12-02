@@ -67,5 +67,28 @@ namespace DAL
         {
             return vlxd.SanPhams.Where(s=>s.MaSanPham==maSanPham).FirstOrDefault();
         }
+        public SanPham GetSanPham(string maSanPham)
+        {
+            return vlxd.SanPhams.SingleOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
+
+        public bool UpdateSanPham(SanPham sanPham)
+        {
+            try
+            {
+                var existingSanPham = vlxd.SanPhams.SingleOrDefault(sp => sp.MaSanPham == sanPham.MaSanPham);
+                if (existingSanPham != null)
+                {
+                    existingSanPham.SoLuongTon = sanPham.SoLuongTon;
+                    vlxd.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

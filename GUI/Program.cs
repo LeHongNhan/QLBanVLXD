@@ -23,7 +23,7 @@ namespace GUI
             Application.SetCompatibleTextRenderingDefault(false);
             mainForm = new frmMain();
             loginForm = new frmDangNhap();
-            Application.Run(mainForm);
+            Application.Run(loginForm);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GUI
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public string NV { get; set; }
         BLLSanPham bllsp;
         
         public frmMain()
@@ -87,6 +88,7 @@ namespace GUI
         private void btnDonHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             frmHoaDon frmHoaDon = new frmHoaDon();
+            frmHoaDon.NV = NV;
             frmHoaDon.ShowDialog();
         }
     }

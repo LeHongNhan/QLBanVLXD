@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHoaDon));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnThem = new System.Windows.Forms.ToolStripButton();
-            this.btnSua = new System.Windows.Forms.ToolStripButton();
             this.btnXoa = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnLuu = new System.Windows.Forms.ToolStripButton();
@@ -66,8 +65,6 @@
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.dtpNgayLap = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.cboTrangThai = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.cboKhachHang = new System.Windows.Forms.ComboBox();
             this.lblHuy = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -79,11 +76,8 @@
             this.gvSanPhamHD = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.spIDSP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.spTenSP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.spTenPhong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.spDonGia = new DevExpress.XtraGrid.Columns.GridColumn();
             this.spSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.spTrangThai = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.spMaPhong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.spThanhTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -134,7 +128,6 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnThem,
-            this.btnSua,
             this.btnXoa,
             this.toolStripSeparator1,
             this.btnLuu,
@@ -156,14 +149,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // btnSua
-            // 
-            this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
-            this.btnSua.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(69, 32);
-            this.btnSua.Text = "Sửa";
-            // 
             // btnXoa
             // 
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
@@ -171,6 +156,7 @@
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(70, 32);
             this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // toolStripSeparator1
             // 
@@ -184,6 +170,7 @@
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(68, 32);
             this.btnLuu.Text = "Lưu";
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThoat
             // 
@@ -309,6 +296,7 @@
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridDS});
+            this.gcDanhSach.Click += new System.EventHandler(this.gcDanhSach_Click);
             // 
             // gridDS
             // 
@@ -321,6 +309,8 @@
             this.gridDS.GridControl = this.gcDanhSach;
             this.gridDS.Name = "gridDS";
             this.gridDS.OptionsEditForm.PopupEditFormWidth = 933;
+            this.gridDS.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridDS_RowClick);
+            this.gridDS.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridDS_RowCellClick);
             // 
             // MaDonHang
             // 
@@ -405,6 +395,7 @@
             this.groupControl1.Size = new System.Drawing.Size(395, 476);
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Danh sách sản phẩm";
+            this.groupControl1.DragOver += new System.Windows.Forms.DragEventHandler(this.groupControl1_DragOver);
             // 
             // gcSanPham
             // 
@@ -431,11 +422,12 @@
             this.gvSanPham.Name = "gvSanPham";
             this.gvSanPham.OptionsBehavior.Editable = false;
             this.gvSanPham.OptionsEditForm.PopupEditFormWidth = 933;
+            this.gvSanPham.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gvSanPham_MouseDown);
             // 
             // MASANPHAM
             // 
             this.MASANPHAM.Caption = "ID";
-            this.MASANPHAM.FieldName = "MASANPHAM";
+            this.MASANPHAM.FieldName = "MaSanPham";
             this.MASANPHAM.MinWidth = 24;
             this.MASANPHAM.Name = "MASANPHAM";
             this.MASANPHAM.Visible = true;
@@ -447,7 +439,7 @@
             this.TENSANPHAM.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.TENSANPHAM.AppearanceHeader.Options.UseFont = true;
             this.TENSANPHAM.Caption = "Tên sản phẩm";
-            this.TENSANPHAM.FieldName = "TENSANPHAM";
+            this.TENSANPHAM.FieldName = "TenSanPham";
             this.TENSANPHAM.MinWidth = 24;
             this.TENSANPHAM.Name = "TENSANPHAM";
             this.TENSANPHAM.Visible = true;
@@ -457,7 +449,7 @@
             // DONGIA
             // 
             this.DONGIA.Caption = "Đơn giá";
-            this.DONGIA.FieldName = "DONGIA";
+            this.DONGIA.FieldName = "DonGia";
             this.DONGIA.MinWidth = 24;
             this.DONGIA.Name = "DONGIA";
             this.DONGIA.Visible = true;
@@ -483,8 +475,6 @@
             this.splitContainerControl2.Panel1.Controls.Add(this.btnThemMoi);
             this.splitContainerControl2.Panel1.Controls.Add(this.dtpNgayLap);
             this.splitContainerControl2.Panel1.Controls.Add(this.label4);
-            this.splitContainerControl2.Panel1.Controls.Add(this.cboTrangThai);
-            this.splitContainerControl2.Panel1.Controls.Add(this.label6);
             this.splitContainerControl2.Panel1.Controls.Add(this.cboKhachHang);
             this.splitContainerControl2.Panel1.Controls.Add(this.lblHuy);
             this.splitContainerControl2.Panel1.Controls.Add(this.label3);
@@ -529,25 +519,6 @@
             this.label4.Size = new System.Drawing.Size(56, 16);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày lập";
-            // 
-            // cboTrangThai
-            // 
-            this.cboTrangThai.FormattingEnabled = true;
-            this.cboTrangThai.Location = new System.Drawing.Point(117, 84);
-            this.cboTrangThai.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.cboTrangThai.Name = "cboTrangThai";
-            this.cboTrangThai.Size = new System.Drawing.Size(200, 24);
-            this.cboTrangThai.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 87);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Trạng thái";
             // 
             // cboKhachHang
             // 
@@ -625,6 +596,7 @@
             this.groupControl4.Size = new System.Drawing.Size(787, 254);
             this.groupControl4.TabIndex = 1;
             this.groupControl4.Text = "Dah sách sản phẩm";
+            this.groupControl4.DragDrop += new System.Windows.Forms.DragEventHandler(this.groupControl4_DragDrop);
             // 
             // gcSanPhamHD
             // 
@@ -639,27 +611,27 @@
             this.gcSanPhamHD.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvSanPhamHD,
             this.gridView2});
+            this.gcSanPhamHD.DragDrop += new System.Windows.Forms.DragEventHandler(this.gcSanPhamHD_DragDrop);
+            this.gcSanPhamHD.DragOver += new System.Windows.Forms.DragEventHandler(this.gcSanPhamHD_DragOver);
             // 
             // gvSanPhamHD
             // 
             this.gvSanPhamHD.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.spIDSP,
             this.spTenSP,
-            this.spTenPhong,
             this.spDonGia,
             this.spSoLuong,
-            this.spTrangThai,
-            this.spMaPhong,
             this.spThanhTien});
             this.gvSanPhamHD.GridControl = this.gcSanPhamHD;
             this.gvSanPhamHD.Name = "gvSanPhamHD";
             this.gvSanPhamHD.OptionsEditForm.PopupEditFormWidth = 933;
             this.gvSanPhamHD.OptionsView.ShowFooter = true;
+            this.gvSanPhamHD.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.gvSanPhamHD_CellValueChanged);
             // 
             // spIDSP
             // 
             this.spIDSP.Caption = "Mã sản phẩm";
-            this.spIDSP.FieldName = "MASP";
+            this.spIDSP.FieldName = "MaSanPham";
             this.spIDSP.MinWidth = 24;
             this.spIDSP.Name = "spIDSP";
             this.spIDSP.Width = 93;
@@ -669,7 +641,7 @@
             this.spTenSP.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.spTenSP.AppearanceHeader.Options.UseFont = true;
             this.spTenSP.Caption = "Tên sản phẩm";
-            this.spTenSP.FieldName = "TENSP";
+            this.spTenSP.FieldName = "TenSanPham";
             this.spTenSP.MinWidth = 24;
             this.spTenSP.Name = "spTenSP";
             this.spTenSP.OptionsColumn.AllowEdit = false;
@@ -677,25 +649,12 @@
             this.spTenSP.VisibleIndex = 0;
             this.spTenSP.Width = 93;
             // 
-            // spTenPhong
-            // 
-            this.spTenPhong.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.spTenPhong.AppearanceHeader.Options.UseFont = true;
-            this.spTenPhong.Caption = "Phòng";
-            this.spTenPhong.FieldName = "TENPHONG";
-            this.spTenPhong.MinWidth = 24;
-            this.spTenPhong.Name = "spTenPhong";
-            this.spTenPhong.OptionsColumn.AllowEdit = false;
-            this.spTenPhong.Visible = true;
-            this.spTenPhong.VisibleIndex = 3;
-            this.spTenPhong.Width = 93;
-            // 
             // spDonGia
             // 
             this.spDonGia.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.spDonGia.AppearanceHeader.Options.UseFont = true;
             this.spDonGia.Caption = "Đơn giá";
-            this.spDonGia.FieldName = "DONGIA";
+            this.spDonGia.FieldName = "DonGia";
             this.spDonGia.MinWidth = 24;
             this.spDonGia.Name = "spDonGia";
             this.spDonGia.OptionsColumn.AllowEdit = false;
@@ -708,7 +667,7 @@
             this.spSoLuong.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
             this.spSoLuong.AppearanceHeader.Options.UseFont = true;
             this.spSoLuong.Caption = "Số lượng";
-            this.spSoLuong.FieldName = "SOLUONG";
+            this.spSoLuong.FieldName = "SoLuong";
             this.spSoLuong.MinWidth = 24;
             this.spSoLuong.Name = "spSoLuong";
             this.spSoLuong.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -717,34 +676,16 @@
             this.spSoLuong.VisibleIndex = 2;
             this.spSoLuong.Width = 93;
             // 
-            // spTrangThai
-            // 
-            this.spTrangThai.Caption = "Trạng thái";
-            this.spTrangThai.FieldName = "DAXOA";
-            this.spTrangThai.MinWidth = 24;
-            this.spTrangThai.Name = "spTrangThai";
-            this.spTrangThai.Width = 93;
-            // 
-            // spMaPhong
-            // 
-            this.spMaPhong.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold);
-            this.spMaPhong.AppearanceHeader.Options.UseFont = true;
-            this.spMaPhong.Caption = "Mã phòng";
-            this.spMaPhong.FieldName = "MAPHONG";
-            this.spMaPhong.MinWidth = 24;
-            this.spMaPhong.Name = "spMaPhong";
-            this.spMaPhong.Width = 93;
-            // 
             // spThanhTien
             // 
             this.spThanhTien.Caption = "Thành tiền";
-            this.spThanhTien.FieldName = "THANHTIEN";
+            this.spThanhTien.FieldName = "ThanhTien";
             this.spThanhTien.MinWidth = 27;
             this.spThanhTien.Name = "spThanhTien";
             this.spThanhTien.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "THANHTIEN", "{0:n0}")});
             this.spThanhTien.Visible = true;
-            this.spThanhTien.VisibleIndex = 4;
+            this.spThanhTien.VisibleIndex = 3;
             this.spThanhTien.Width = 100;
             // 
             // gridView2
@@ -782,7 +723,7 @@
             // xóaToolStripMenuItem
             // 
             this.xóaToolStripMenuItem.Name = "xóaToolStripMenuItem";
-            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.xóaToolStripMenuItem.Size = new System.Drawing.Size(104, 24);
             this.xóaToolStripMenuItem.Text = "Xóa";
             // 
             // frmHoaDon
@@ -843,7 +784,6 @@
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnThem;
-        private System.Windows.Forms.ToolStripButton btnSua;
         private System.Windows.Forms.ToolStripButton btnXoa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnLuu;
@@ -871,8 +811,6 @@
         private System.Windows.Forms.Button btnThemMoi;
         private System.Windows.Forms.DateTimePicker dtpNgayLap;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboTrangThai;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboKhachHang;
         private System.Windows.Forms.Label lblHuy;
         private System.Windows.Forms.Label label3;
@@ -884,11 +822,8 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvSanPhamHD;
         private DevExpress.XtraGrid.Columns.GridColumn spIDSP;
         private DevExpress.XtraGrid.Columns.GridColumn spTenSP;
-        private DevExpress.XtraGrid.Columns.GridColumn spTenPhong;
         private DevExpress.XtraGrid.Columns.GridColumn spDonGia;
         private DevExpress.XtraGrid.Columns.GridColumn spSoLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn spTrangThai;
-        private DevExpress.XtraGrid.Columns.GridColumn spMaPhong;
         private DevExpress.XtraGrid.Columns.GridColumn spThanhTien;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;

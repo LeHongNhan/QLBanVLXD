@@ -277,7 +277,6 @@
             this.gControl.Name = "gControl";
             this.gControl.Size = new System.Drawing.Size(962, 353);
             this.gControl.TabIndex = 2;
-            this.gControl.Paint += new System.Windows.Forms.PaintEventHandler(this.gControl_Paint);
             // 
             // galControl
             // 

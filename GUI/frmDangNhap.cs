@@ -40,6 +40,7 @@ namespace GUI
             }
             else
             {
+                Program.mainForm.NV = nvLogin.MaNhanVien;
                 this.Hide();
                 Program.mainForm.Show();
                 Program.mainForm.FormClosed += (a, s) => this.Close();

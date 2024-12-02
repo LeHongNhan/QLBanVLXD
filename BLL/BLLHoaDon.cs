@@ -22,9 +22,29 @@ namespace BLL
             return daoHoaDon.GetDonHangs();
         }
 
-        public List<ChiTietDonHang> GetChiTietDonHangs(string id)
+        public List<DTOChiTietDonHang> GetChiTietDonHangs(string id)
         {
             return daoHoaDon.GetChiTietDonHangs(id);
+        }
+
+        public DonHang GetDonHang(string id)
+        {
+            return daoHoaDon.GetDonHang(id);
+        }
+
+        public string GetNextMDH()
+        {
+            return daoHoaDon.getNextDonHang();
+        }
+
+        public string InsertDH(DonHang donHang)
+        {
+            return daoHoaDon.InsertDonHang(donHang);
+        }
+
+        public bool InsertChiTietDonHang(ChiTietDonHang newChiTietDonHang)
+        {
+            return daoHoaDon.InsertChiTietDonHang(newChiTietDonHang);
         }
     }
 }

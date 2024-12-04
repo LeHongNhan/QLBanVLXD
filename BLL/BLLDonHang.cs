@@ -24,5 +24,13 @@ namespace BLL
         {
             return daldonhang.loadDonHangGC();
         }
+        public List<DoanhThuNgay> GetTongTienTheoNgay()
+        {
+            return daldonhang.GetTongTienTheoNgay();
+        }
+        public decimal GetTongDoanhThuTheoNgay(DateTime tuNgay, DateTime denNgay)
+        {
+            return daldonhang.GetTongDoanhThuTheoNgay(tuNgay, denNgay);
+        }
     }
 }

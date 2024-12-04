@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="BLLChiTietDonHang.cs" />
     <Compile Include="BLLDonHang.cs" />
+    <Compile Include="BLLHoaDon.cs" />
     <Compile Include="BLLKhachHang.cs" />
     <Compile Include="BLLNhaCungCap.cs" />
     <Compile Include="BLLNhanVien.cs" />

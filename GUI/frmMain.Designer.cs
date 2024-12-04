@@ -71,7 +71,6 @@
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem,
             this.barButtonItem1,
             this.barButtonItem2,
             this.barButtonItem3,
@@ -146,6 +145,7 @@
             this.barButtonItem4.Id = 7;
             this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
             this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem5
             // 
@@ -277,7 +277,6 @@
             this.gControl.Name = "gControl";
             this.gControl.Size = new System.Drawing.Size(962, 353);
             this.gControl.TabIndex = 2;
-            this.gControl.Paint += new System.Windows.Forms.PaintEventHandler(this.gControl_Paint);
             // 
             // galControl
             // 

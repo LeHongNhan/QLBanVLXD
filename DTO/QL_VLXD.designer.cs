@@ -57,7 +57,7 @@ namespace DTO
     #endregion
 		
 		public QL_VLXDDataContext() : 
-				base(global::DTO.Properties.Settings.Default.QL_VLXDConnectionString1, mappingSource)
+				base(global::DTO.Properties.Settings.Default.QL_VLXDConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -1773,7 +1773,7 @@ namespace DTO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatKhau", DbType="VarChar(255)")]
 		public string MatKhau
 		{
 			get

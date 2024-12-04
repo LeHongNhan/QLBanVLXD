@@ -28,19 +28,22 @@ namespace GUI
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            if (txtTaiKhoan.Text != string.Empty && txtMatKhau.Text != string.Empty)
-            {
-                nvLogin = bllNhanVien.checkDangNhap(txtTaiKhoan.Text, txtMatKhau.Text);
-                if (nvLogin == null)
-                {
-                    MessageBox.Show("Check lại tên đăng nhập, mật khẩu");
-                }
-                else
-                {
-                    this.Hide();
-                    Program.mainForm.Show();
-                }
+            
+        }
 
+        private void loginControl1_SubmitClicked(object sender, EventArgs args)
+        {
+            nvLogin = bllNhanVien.checkDangNhap(loginControl1.getUsername(), loginControl1.getPassword());
+            if (nvLogin == null)
+            {
+                MessageBox.Show("Check lại tên đăng nhập, mật khẩu");
+            }
+            else
+            {
+                Program.mainForm.NV = nvLogin.MaNhanVien;
+                this.Hide();
+                Program.mainForm.Show();
+                Program.mainForm.FormClosed += (a, s) => this.Close();
             }
         }
     }

@@ -48,6 +48,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DALChiTietDonHang.cs" />
     <Compile Include="DALDonHang.cs" />
+    <Compile Include="DALHoaDon.cs" />
     <Compile Include="DALKhachHang.cs" />
     <Compile Include="DALNhaCungCap.cs" />
     <Compile Include="DALNhanVien.cs" />

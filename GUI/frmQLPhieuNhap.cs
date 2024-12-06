@@ -12,66 +12,193 @@ namespace GUI
     {
         private BLLPhieuNhap bllPhieuNhap = new BLLPhieuNhap();
         private BLLChiTietPhieuNhap bllChiTietPhieuNhap = new BLLChiTietPhieuNhap();
+        private string currentNhanVien; 
 
         public frmQLPhieuNhap()
         {
             InitializeComponent();
-        }
-
-        private void frmQLPhieuNhap_Load(object sender, EventArgs e)
-        {
             LoadPhieuNhapList();
+            LoadNhaCungCapList();
+            LoadSanPhamList();
+            cboSanPham.SelectedIndexChanged += CboSanPham_SelectedIndexChanged;
+            dtpNgayNhap.EditValueChanged += DtpNgayNhap_EditValueChanged;
+            SetNhanVienNhap();
         }
 
-        private void LoadPhieuNhapList()
+        private void DtpNgayNhap_EditValueChanged(object sender, EventArgs e)
         {
-            gcPhieuNhap.DataSource = bllPhieuNhap.GetPhieuNhapList();
-        }
-
-        private void LoadChiTietPhieuNhapList(string maPhieuNhap)
-        {
-            gcChiTietPhieuNhap.DataSource = bllChiTietPhieuNhap.GetChiTietPhieuNhapList(maPhieuNhap);
-        }
-
-        private void gvPhieuNhap_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
-        {
-            var selectedPhieuNhap = gvPhieuNhap.GetFocusedRow() as PhieuNhap;
-            if (selectedPhieuNhap != null)
+            DateTime selectedDate;
+            if (DateTime.TryParse(dtpNgayNhap.EditValue.ToString(), out selectedDate))
             {
-                txtMaPhieuNhap.Text = selectedPhieuNhap.MaPhieuNhap;
-                dtpNgayNhap.EditValue = selectedPhieuNhap.NgayNhap;
-                cboNhaCungCap.EditValue = selectedPhieuNhap.MaNhaCungCap;
-                txtNhanVienNhap.Text = selectedPhieuNhap.MaNhanVien;
-                txtTongTien.Text = selectedPhieuNhap.TongTien.ToString();
-
-                LoadChiTietPhieuNhapList(selectedPhieuNhap.MaPhieuNhap);
-            }
-        }
-
-        private void UpdateTonKho(string maSanPham, int soLuong, bool isAdding)
-        {
-            if (isAdding)
-            {
-                bllChiTietPhieuNhap.IncreaseTonKho(maSanPham, soLuong);
+                MessageBox.Show($"Ngày nhập đã chọn: {selectedDate.ToString("dd-MM-yyyy")}");
             }
             else
             {
-                bllChiTietPhieuNhap.DecreaseTonKho(maSanPham, soLuong);
+                MessageBox.Show("Ngày nhập không hợp lệ!");
             }
         }
 
-        private void UpdateTongTien()
+
+        private void SetNhanVienNhap()
         {
-            if (gcChiTietPhieuNhap.DataSource is List<ChiTietPhieuNhap> chiTietList)
+            txtNhanVienNhap.Text = currentNhanVien; // Gán tên hoặc mã nhân viên
+            txtNhanVienNhap.ReadOnly = true; // Không cho phép chỉnh sửa
+        }
+
+        private void CboSanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboSanPham.SelectedValue != null)
             {
-                txtTongTien.Text = chiTietList.Sum(ct => ct.SoLuong * ct.DonGia).ToString();
+                var maSanPham = cboSanPham.SelectedValue.ToString();
+                var sanPham = new BLLSanPham().GetSanPhamById(maSanPham);
+                if (sanPham != null)
+                {
+                    txtDonGia.Text = sanPham.DonGia.ToString(); // Hiển thị đơn giá
+                }
+            };
+        }
+
+        // Load danh sách Nhà Cung Cấp
+        private void LoadNhaCungCapList()
+        {
+            try
+            {
+                var nhaCungCapList = new BLLNhaCungCap().GetNhaCungCaps();
+                cboNhaCungCap.DataSource = nhaCungCapList;
+                cboNhaCungCap.DisplayMember = "TenNhaCungCap"; // Tên hiển thị
+                cboNhaCungCap.ValueMember = "MaNhaCungCap";   // Giá trị thực
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu Nhà Cung Cấp: {ex.Message}");
+            }
+        }
+        private void LoadSanPhamList()
+        {
+            try
+            {
+                var sanPhamList = new BLLSanPham().GetSanPhams();
+                cboSanPham.DataSource = sanPhamList;
+                cboSanPham.DisplayMember = "TenSanPham"; // Tên hiển thị
+                cboSanPham.ValueMember = "MaSanPham";   // Giá trị thực
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu Sản Phẩm: {ex.Message}");
+            }
+        } 
+            // Load danh sách Phiếu Nhập lên GridControl
+         private void LoadPhieuNhapList()
+        {
+            try
+            {
+                var phieuNhapList = bllPhieuNhap.GetPhieuNhapList();
+                gcPhieuNhap.DataSource = phieuNhapList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu Phiếu Nhập: {ex.Message}");
             }
         }
 
+        // Load Chi Tiết Phiếu Nhập
+        private void LoadChiTietPhieuNhapList(string maPhieuNhap)
+        {
+            try
+            {
+                var chiTietList = bllChiTietPhieuNhap.GetChiTietPhieuNhapList(maPhieuNhap);
+                gcChiTietPhieuNhap.DataSource = chiTietList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu Chi Tiết Phiếu Nhập: {ex.Message}");
+            }
+        }
+
+        // Xử lý sự kiện RowClick của gcPhieuNhap
+        private void gvPhieuNhap_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            try
+            {
+                var selectedPhieuNhap = gvPhieuNhap.GetFocusedRow() as PhieuNhap;
+                if (selectedPhieuNhap != null)
+                {
+                    txtMaPhieuNhap.Text = selectedPhieuNhap.MaPhieuNhap;
+                    dtpNgayNhap.EditValue = selectedPhieuNhap.NgayNhap;
+                    cboNhaCungCap.SelectedValue = selectedPhieuNhap.MaNhaCungCap;
+                    txtNhanVienNhap.Text = selectedPhieuNhap.MaNhanVien;
+                    txtTongTien.Text = selectedPhieuNhap.TongTien.ToString();
+
+                    LoadChiTietPhieuNhapList(selectedPhieuNhap.MaPhieuNhap);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xử lý chọn Phiếu Nhập: {ex.Message}");
+            }
+        }
+
+        private bool ValidateInput()
+        {
+            if (string.IsNullOrWhiteSpace(txtMaPhieuNhap.Text) ||
+                dtpNgayNhap.EditValue == null ||
+                cboNhaCungCap.SelectedValue == null ||
+                string.IsNullOrWhiteSpace(txtNhanVienNhap.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
+                return false;
+            }
+            return true;
+        }
+
+        private void ClearInput()
+        {
+            txtMaPhieuNhap.Text = "";
+            dtpNgayNhap.EditValue = null;
+            cboNhaCungCap.SelectedIndex = -1;
+            txtNhanVienNhap.Text = "";
+            txtTongTien.Text = "0";
+        }
+
+        // Hàm tạo mã phiếu nhập tự động
+        private string GenerateMaPhieuNhap()
+        {
+            var now = DateTime.Now;
+            return $"PN{now:yyyyMMddHHmmss}";
+        }
+
+        // Load form, gán mã tự động khi nhấn "Thêm"
         private void btnThem_Click(object sender, EventArgs e)
         {
             ClearInput();
+            txtMaPhieuNhap.Text = GenerateMaPhieuNhap(); // Tự động gán mã
+            txtMaPhieuNhap.ReadOnly = true; // Không cho phép chỉnh sửa
             txtMaPhieuNhap.Focus();
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (ValidateInput())
+            {
+                var phieuNhap = new PhieuNhap
+                {
+                    MaPhieuNhap = txtMaPhieuNhap.Text,
+                    NgayNhap = (DateTime)dtpNgayNhap.EditValue,
+                    MaNhaCungCap = cboNhaCungCap.SelectedValue.ToString(),
+                    MaNhanVien = txtNhanVienNhap.Text,
+                    TongTien = int.Parse(txtTongTien.Text)
+                };
+
+                if (bllPhieuNhap.AddPhieuNhap(phieuNhap))
+                {
+                    MessageBox.Show("Thêm phiếu nhập thành công.");
+                    LoadPhieuNhapList();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm phiếu nhập thất bại.");
+                }
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -82,7 +209,7 @@ namespace GUI
                 {
                     MaPhieuNhap = txtMaPhieuNhap.Text,
                     NgayNhap = (DateTime)dtpNgayNhap.EditValue,
-                    MaNhaCungCap = cboNhaCungCap.EditValue.ToString(),
+                    MaNhaCungCap = cboNhaCungCap.SelectedValue.ToString(),
                     MaNhanVien = txtNhanVienNhap.Text,
                     TongTien = int.Parse(txtTongTien.Text)
                 };
@@ -114,127 +241,6 @@ namespace GUI
                     MessageBox.Show("Xóa phiếu nhập thất bại.");
                 }
             }
-        }
-
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
-            if (ValidateInput())
-            {
-                var phieuNhap = new PhieuNhap
-                {
-                    MaPhieuNhap = txtMaPhieuNhap.Text,
-                    NgayNhap = (DateTime)dtpNgayNhap.EditValue,
-                    MaNhaCungCap = cboNhaCungCap.EditValue.ToString(),
-                    MaNhanVien = txtNhanVienNhap.Text,
-                    TongTien = int.Parse(txtTongTien.Text)
-                };
-
-                if (bllPhieuNhap.AddPhieuNhap(phieuNhap))
-                {
-                    MessageBox.Show("Thêm phiếu nhập thành công.");
-                    LoadPhieuNhapList();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm phiếu nhập thất bại.");
-                }
-            }
-        }
-
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            ClearInput();
-        }
-
-        private void btnThemChiTiet_Click(object sender, EventArgs e)
-        {
-            var chiTiet = new ChiTietPhieuNhap
-            {
-                MaPhieuNhap = txtMaPhieuNhap.Text,
-                MaSanPham = cboSanPham.EditValue.ToString(),
-                SoLuong = int.Parse(txtSoLuong.Text),
-                DonGia = int.Parse(txtDonGia.Text)
-            };
-
-            if (bllChiTietPhieuNhap.AddChiTietPhieuNhap(chiTiet))
-            {
-                UpdateTonKho(chiTiet.MaSanPham, chiTiet.SoLuong ?? 0, true);
-                LoadChiTietPhieuNhapList(chiTiet.MaPhieuNhap);
-                UpdateTongTien();
-                MessageBox.Show("Thêm chi tiết phiếu nhập thành công.");
-            }
-            else
-            {
-                MessageBox.Show("Thêm chi tiết phiếu nhập thất bại.");
-            }
-        }
-
-        private void btnSuaChiTiet_Click(object sender, EventArgs e)
-        {
-            var selectedChiTiet = gvChiTietPhieuNhap.GetFocusedRow() as ChiTietPhieuNhap;
-            if (selectedChiTiet != null)
-            {
-                var soLuongCu = selectedChiTiet.SoLuong ?? 0;
-
-                selectedChiTiet.SoLuong = int.Parse(txtSoLuong.Text);
-                selectedChiTiet.DonGia = int.Parse(txtDonGia.Text);
-
-                if (bllChiTietPhieuNhap.UpdateChiTietPhieuNhap(selectedChiTiet))
-                {
-                    UpdateTonKho(selectedChiTiet.MaSanPham, selectedChiTiet.SoLuong ?? 0 - soLuongCu, true);
-                    LoadChiTietPhieuNhapList(selectedChiTiet.MaPhieuNhap);
-                    UpdateTongTien();
-                    MessageBox.Show("Cập nhật chi tiết phiếu nhập thành công.");
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật chi tiết phiếu nhập thất bại.");
-                }
-            }
-        }
-
-        private void btnXoaChiTiet_Click(object sender, EventArgs e)
-        {
-            var selectedChiTiet = gvChiTietPhieuNhap.GetFocusedRow() as ChiTietPhieuNhap;
-            if (selectedChiTiet != null)
-            {
-                if (MessageBox.Show("Bạn có chắc chắn muốn xóa chi tiết này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    if (bllChiTietPhieuNhap.DeleteChiTietPhieuNhap(selectedChiTiet.MaPhieuNhap, selectedChiTiet.MaSanPham))
-                    {
-                        UpdateTonKho(selectedChiTiet.MaSanPham, selectedChiTiet.SoLuong ?? 0, false);
-                        LoadChiTietPhieuNhapList(selectedChiTiet.MaPhieuNhap);
-                        UpdateTongTien();
-                        MessageBox.Show("Xóa chi tiết phiếu nhập thành công.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Xóa chi tiết phiếu nhập thất bại.");
-                    }
-                }
-            }
-        }
-
-        private bool ValidateInput()
-        {
-            if (string.IsNullOrWhiteSpace(txtMaPhieuNhap.Text) ||
-                dtpNgayNhap.EditValue == null ||
-                cboNhaCungCap.EditValue == null ||
-                string.IsNullOrWhiteSpace(txtNhanVienNhap.Text))
-            {
-                MessageBox.Show("Vui lòng nhập đầy đủ thông tin.");
-                return false;
-            }
-            return true;
-        }
-
-        private void ClearInput()
-        {
-            txtMaPhieuNhap.Text = "";
-            dtpNgayNhap.EditValue = null;
-            cboNhaCungCap.EditValue = null;
-            txtNhanVienNhap.Text = "";
-            txtTongTien.Text = "0";
         }
     }
 }

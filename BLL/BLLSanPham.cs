@@ -15,11 +15,15 @@ namespace BLL
         {
 
         }
+        public SanPham GetSanPhamById(string maSanPham)
+        {
+            return dalsanpham.GetSanPhamById(maSanPham);
+        }
         public List<SanPham> GetSanPhams()
         {
             return dalsanpham.LoadSanPham();
         }
-
+        
         public bool KTKC(string maSanPham)
         {
             List<SanPham> sanPhams = GetSanPhams();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
@@ -18,6 +19,11 @@ namespace DAL
         {
             return vlxd.SanPhams.ToList();
         }
+        public SanPham GetSanPhamById(string maSanPham)
+        {
+            return vlxd.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
+
         public bool ThemSanPham(SanPham pSanpham)
         {
             try

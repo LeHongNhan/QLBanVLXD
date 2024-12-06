@@ -53,5 +53,9 @@ namespace BLL
         {
             return dalsanpham.TimKiemSpTheoMa(pMaSanPham);
         }
+        public bool CapNhatSoLuongTonKho(string pMaSanPham, int pSoLuong)
+        {
+            return dalsanpham.CapNhatSoLuongTon(pMaSanPham, pSoLuong);
+        }
     }
 }

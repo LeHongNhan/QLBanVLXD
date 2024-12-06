@@ -96,5 +96,24 @@ namespace DAL
                 return false;
             }
         }
+        public bool CapNhatSoLuongTon(string maSanPham, int soLuongNhap)
+        {
+            try
+            {
+                var sanPham = vlxd.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+                if (sanPham != null)
+                {
+                    sanPham.SoLuongTon += soLuongNhap;
+                    vlxd.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi cập nhật số lượng tồn: {ex.Message}");
+            }
+        }
+
     }
 }

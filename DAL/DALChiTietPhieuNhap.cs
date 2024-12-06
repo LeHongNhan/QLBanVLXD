@@ -62,23 +62,23 @@ namespace DAL
             }
         }
 
-        public bool DeleteChiTietPhieuNhap(string maPhieuNhap, string maSanPham)
+        public bool DeleteAllChiTietPhieuNhapByMaPhieuNhap(string maPhieuNhap)
         {
             try
             {
-                var chiTiet = vlxd.ChiTietPhieuNhaps.FirstOrDefault(ct => ct.MaPhieuNhap == maPhieuNhap && ct.MaSanPham == maSanPham);
-                if (chiTiet != null)
+                var chiTietList = vlxd.ChiTietPhieuNhaps.Where(ct => ct.MaPhieuNhap == maPhieuNhap).ToList();
+                if (chiTietList.Any())
                 {
-                    vlxd.ChiTietPhieuNhaps.DeleteOnSubmit(chiTiet);
+                    vlxd.ChiTietPhieuNhaps.DeleteAllOnSubmit(chiTietList);
                     vlxd.SubmitChanges();
-                    return true;
                 }
-                return false;
+                return true;
             }
             catch
             {
                 return false;
             }
         }
+
     }
 }

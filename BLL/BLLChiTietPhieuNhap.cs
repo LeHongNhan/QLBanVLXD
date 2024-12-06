@@ -25,10 +25,11 @@ namespace BLL
             return dalChiTietPhieuNhap.UpdateChiTietPhieuNhap(chiTiet);
         }
 
-        public bool DeleteChiTietPhieuNhap(string maPhieuNhap, string maSanPham)
+        public bool DeleteAllChiTietPhieuNhap(string maPhieuNhap)
         {
-            return dalChiTietPhieuNhap.DeleteChiTietPhieuNhap(maPhieuNhap, maSanPham);
+            return dalChiTietPhieuNhap.DeleteAllChiTietPhieuNhapByMaPhieuNhap(maPhieuNhap);
         }
+
         // Tăng tồn kho sản phẩm khi thêm chi tiết phiếu nhập
         public bool IncreaseTonKho(string maSanPham, int soLuong)
         {
@@ -58,6 +59,26 @@ namespace BLL
             sanPham.SoLuongTon -= soLuong;
             return dalSanPham.UpdateSanPham(sanPham);
         }
+        public bool DecreaseTonKhoForDeletedChiTiet(string maPhieuNhap)
+        {
+            try
+            {
+                var chiTietList = dalChiTietPhieuNhap.GetChiTietByPhieuNhapId(maPhieuNhap);
+                foreach (var chiTiet in chiTietList)
+                {
+                    if (!DecreaseTonKho(chiTiet.MaSanPham, chiTiet.SoLuong ?? 0))
+                    {
+                        return false; // Nếu giảm tồn kho thất bại
+                    }
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
     

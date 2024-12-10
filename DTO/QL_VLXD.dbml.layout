@@ -26,7 +26,7 @@
         <elementListCompartment Id="1d87e630-5b2e-47f5-a3bc-518918d4a222" absoluteBounds="3.515, 9.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="58c91edd-819c-4191-9cd1-24ffc87f5b1b" absoluteBounds="0.75, 9.375, 2, 1.9631982421874987">
+    <classShape Id="58c91edd-819c-4191-9cd1-24ffc87f5b1b" absoluteBounds="0.75, 9.375, 2, 1.9631982421875005">
       <DataClassMoniker Name="/QL_VLXDDataContext/KhachHang" />
       <nestedChildShapes>
         <elementListCompartment Id="ac84d6f3-2af2-4979-a2e1-00ee3d84966f" absoluteBounds="0.765, 9.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
@@ -50,21 +50,21 @@
         <elementListCompartment Id="162c2d35-fba7-41c5-b3b4-7aeb76933a14" absoluteBounds="3.515, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.5 : 7.28929768880208); (6.25 : 7.28929768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 7.28929768880208); (6.25 : 7.28929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/SanPham/SanPham_ChiTietDonHang" />
       <nodes>
         <classShapeMoniker Id="b1723608-a42e-4df3-bf57-ce19d73ba886" />
         <classShapeMoniker Id="518bd163-e99e-47f4-99a0-2e1948d0c9c8" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.375); (5.875 : 6); (5.875 : 4.66429768880208); (6.25 : 4.66429768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 6.375); (5.875 : 6); (5.875 : 4.66429768880208); (6.25 : 4.66429768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/SanPham/SanPham_ChiTietPhieuNhap" />
       <nodes>
         <classShapeMoniker Id="b1723608-a42e-4df3-bf57-ce19d73ba886" />
         <classShapeMoniker Id="626adbc9-62bb-461a-9a43-791a8c0308bb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.3854484049479); (7.25 : 10.3854484049479); (7.25 : 8.07859537760417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 10.3854484049479); (7.25 : 10.3854484049479); (7.25 : 8.07859537760417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/DonHang/DonHang_ChiTietDonHang" />
       <nodes>
         <classShapeMoniker Id="dbac71ab-ad65-46d1-abd7-b82ced183635" />
@@ -78,7 +78,7 @@
         <classShapeMoniker Id="dbac71ab-ad65-46d1-abd7-b82ced183635" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 5.90549967447917); (1.75 : 7.35659912109375); (3.04166666666667 : 7.35659912109375 : JumpStart); (3.20833333333333 : 7.35659912109375 : JumpEnd); (3.5 : 7.35659912109375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(1.75 : 5.90549967447917); (1.75 : 7.35659912109375); (3.04166666666667 : 7.35659912109375 : JumpStart); (3.20833333333333 : 7.35659912109375 : JumpEnd); (3.5 : 7.35659912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/NhaCungCap/NhaCungCap_SanPham" />
       <nodes>
         <classShapeMoniker Id="a58e34ad-c958-4e6f-ad40-60c05efe0dc4" />
@@ -92,21 +92,21 @@
         <classShapeMoniker Id="dbac71ab-ad65-46d1-abd7-b82ced183635" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.20714884440104); (6.25 : 4.20714884440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 4.20714884440104); (6.25 : 4.20714884440104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/PhieuNhap/PhieuNhap_ChiTietPhieuNhap" />
       <nodes>
         <classShapeMoniker Id="e55e6635-76b8-4d8f-bdd2-c1a6cd444d87" />
         <classShapeMoniker Id="626adbc9-62bb-461a-9a43-791a8c0308bb" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.26044840494792); (3.04166666666667 : 4.26044840494792 : JumpStart); (3.20833333333333 : 4.26044840494792 : JumpEnd); (3.5 : 4.26044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 4.26044840494792); (3.04166666666667 : 4.26044840494792 : JumpStart); (3.20833333333333 : 4.26044840494792 : JumpEnd); (3.5 : 4.26044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/NhaCungCap/NhaCungCap_PhieuNhap" />
       <nodes>
         <classShapeMoniker Id="a58e34ad-c958-4e6f-ad40-60c05efe0dc4" />
         <classShapeMoniker Id="e55e6635-76b8-4d8f-bdd2-c1a6cd444d87" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 1.79649733723958); (4.5 : 1.79649733723958); (4.5 : 3)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 1.79649733723958); (4.5 : 1.79649733723958); (4.5 : 3)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_VLXDDataContext/NhanVien/NhanVien_PhieuNhap" />
       <nodes>
         <classShapeMoniker Id="8e552384-e163-43b3-9b14-2c6dd1ce6df1" />

@@ -91,5 +91,11 @@ namespace GUI
             frmHoaDon.NV = NV;
             frmHoaDon.ShowDialog();
         }
+
+        private void btnThongKe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmThongKe tk = new frmThongKe();
+            tk.ShowDialog();
+        }
     }
 }

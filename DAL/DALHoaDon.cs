@@ -54,9 +54,11 @@ namespace DAL
             }
 
             string numericPart = maxId.Substring(2);
-            if (int.TryParse(numericPart, out int maxNumber))
+            int maxNumber;
+            if (int.TryParse(numericPart, out maxNumber))
             {
                 return $"DH{(maxNumber + 1):D3}";
+
             }
 
             throw new Exception("Invalid MaDonHang format in the database.");

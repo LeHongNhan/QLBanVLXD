@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using DTO;
-using DevExpress.XtraCharts;
+//using DevExpress.XtraCharts;
 using System.Data.SqlClient;
 using System.Globalization;
 namespace GUI
@@ -23,59 +23,59 @@ namespace GUI
         {
             
             InitializeComponent();
-            LoadChartThongKe();
+            //LoadChartThongKe();
         }
-        public void LoadChartThongKe()
-        {
-            BLLDonHang donHang = new BLLDonHang();
+        //public void LoadChartThongKe()
+        //{
+        //    BLLDonHang donHang = new BLLDonHang();
 
-            // Lấy dữ liệu từ BLL
-            var data = donHang.GetTongTienTheoNgay();
+        //    // Lấy dữ liệu từ BLL
+        //    var data = donHang.GetTongTienTheoNgay();
 
-            // Gán dữ liệu vào ChartControl
-            chartThongKe.DataSource = data;
+        //    // Gán dữ liệu vào ChartControl
+        //    chartThongKe.DataSource = data;
 
-            // Xóa series cũ
-            chartThongKe.Series.Clear();
+        //    // Xóa series cũ
+        //    chartThongKe.Series.Clear();
 
-            // Tạo series mới
-            Series series = new Series("Tổng tiền", ViewType.Bar);
+        //    // Tạo series mới
+        //    Series series = new Series("Tổng tiền", ViewType.Bar);
 
-            // Cấu hình dữ liệu cho series
-            series.ArgumentDataMember = "NgayLap"; // Trục X: Ngày lập
-            series.ValueDataMembers.AddRange("TongTien"); // Trục Y: Tổng tiền
+        //    // Cấu hình dữ liệu cho series
+        //    series.ArgumentDataMember = "NgayLap"; // Trục X: Ngày lập
+        //    series.ValueDataMembers.AddRange("TongTien"); // Trục Y: Tổng tiền
 
-            // Thêm series vào ChartControl
-            chartThongKe.Series.Add(series);
+        //    // Thêm series vào ChartControl
+        //    chartThongKe.Series.Add(series);
 
-            // Tùy chỉnh tiêu đề
-            chartThongKe.Titles.Clear();
-            chartThongKe.Titles.Add(new ChartTitle { Text = "Tổng tiền theo ngày lập" });
-        }
+        //    // Tùy chỉnh tiêu đề
+        //    chartThongKe.Titles.Clear();
+        //    chartThongKe.Titles.Add(new ChartTitle { Text = "Tổng tiền theo ngày lập" });
+        //}
         private void LoadDataToChart()
         {
             // Khởi tạo BLLDonHang
-            BLLDonHang bllDonHang = new BLLDonHang();
+            //BLLDonHang bllDonHang = new BLLDonHang();
 
-            // Lấy giá trị từ DateTimePickers
-            DateTime tuNgay = dtpTuNgay.Value;
-            DateTime denNgay = dtpDenNgay.Value;
+            //// Lấy giá trị từ DateTimePickers
+            //DateTime tuNgay = dtpTuNgay.Value;
+            //DateTime denNgay = dtpDenNgay.Value;
 
-            // Lọc dữ liệu từ BLL theo khoảng thời gian
-            var data = bllDonHang.GetTongTienTheoNgay()
-                .Where(x => x.NgayLap >= tuNgay && x.NgayLap <= denNgay)
-                .ToList();
+            //// Lọc dữ liệu từ BLL theo khoảng thời gian
+            //var data = bllDonHang.GetTongTienTheoNgay()
+            //    .Where(x => x.NgayLap >= tuNgay && x.NgayLap <= denNgay)
+            //    .ToList();
 
-            // Gắn dữ liệu vào ChartControl
-            chartThongKe.Series.Clear();
-            Series series = new Series("Doanh thu theo ngày", ViewType.Bar);
-            series.ArgumentDataMember = "NgayLap";  // Trục X
-            series.ValueDataMembers.AddRange("TongTien");  // Trục Y
-            BarSeriesLabel label = (BarSeriesLabel)series.Label;
-            label.Visible = true; // Hiển thị Label
-            label.TextPattern = "{V:#,##0} đ";
-            chartThongKe.DataSource = data;
-            chartThongKe.Series.Add(series);
+            //// Gắn dữ liệu vào ChartControl
+            //chartThongKe.Series.Clear();
+            //Series series = new Series("Doanh thu theo ngày", ViewType.Bar);
+            //series.ArgumentDataMember = "NgayLap";  // Trục X
+            //series.ValueDataMembers.AddRange("TongTien");  // Trục Y
+            //BarSeriesLabel label = (BarSeriesLabel)series.Label;
+            //label.Visible = true; // Hiển thị Label
+            //label.TextPattern = "{V:#,##0} đ";
+            //chartThongKe.DataSource = data;
+            //chartThongKe.Series.Add(series);
         }
         private void chartThongKe_Click(object sender, EventArgs e)
         {

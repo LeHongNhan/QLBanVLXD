@@ -349,8 +349,6 @@ namespace GUI
                 SoLuong = 0,
             };
 
-            MessageBox.Show(sp.TenSanPham);
-
             var sanPhamHDList = gcSanPhamHD.DataSource as List<DTOChiTietDonHang>;
             if (sanPhamHDList == null)
             {
@@ -416,7 +414,6 @@ namespace GUI
         {
             foreach (DTOChiTietDonHang item in source)
             {
-                MessageBox.Show(item.MaSanPham);
                 ChiTietDonHang ctdon = new ChiTietDonHang()
                 {
                     MaDonHang = id,

@@ -36,6 +36,7 @@ namespace GUI
 
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
+                btnHuy.Enabled = true;
 
                 txtMaNhanVien.Text = gridDS.GetFocusedRowCellValue("MaNhanVien").ToString();
                 txtTenNhanVien.Text = gridDS.GetFocusedRowCellValue("TenNhanVien").ToString();
@@ -104,6 +105,18 @@ namespace GUI
         {
             return phoneNumber.Length == 10 && phoneNumber.All(char.IsDigit);
         }
+        private string SinhMatKhauNgauNhien()
+        {
+            Random random = new Random();
+            StringBuilder matKhau = new StringBuilder();
+            for (int i = 0; i < 6; i++)
+            {
+                int soNgauNhien = random.Next(0, 10);
+                matKhau.Append(soNgauNhien);
+            }
+            return matKhau.ToString();
+        }
+
         void LoadNhanVien()
         {
             List<NhanVien> nhanViens = bllnhanvien.GetNhanViens();
@@ -116,6 +129,7 @@ namespace GUI
         {
             _them = true;
             txtMaNhanVien.Text = "NV" + (bllnhanvien.GetNhanViens().Count + 1).ToString("D3");
+            txtMatKhau.Text = SinhMatKhauNgauNhien();
             enableCacControl();
         }
 

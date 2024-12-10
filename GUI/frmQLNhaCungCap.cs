@@ -87,7 +87,7 @@ namespace GUI
 
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                btnLuu.Enabled = true;
+                btnHuy.Enabled = true;
                 txtMaNCC.Text = gridDS.GetFocusedRowCellValue("MaNhaCungCap").ToString();
                 txtTenNCC.Text = gridDS.GetFocusedRowCellValue("TenNhaCungCap").ToString();
                 txtSPCungCap.Text = gridDS.GetFocusedRowCellValue("LoaiSanPhamCungCap").ToString();

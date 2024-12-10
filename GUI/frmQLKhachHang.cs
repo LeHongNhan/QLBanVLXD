@@ -25,6 +25,7 @@ namespace GUI
             _them = false;
             LoadKhachHang();
             xuLyControl();
+            xuLyControl();
             gridDS.OptionsBehavior.Editable = false;
             gridDS.Click += GridDS_Click;
         }
@@ -35,7 +36,6 @@ namespace GUI
             {
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
-                btnLuu.Enabled = true;
                 btnHuy.Enabled = true;
                 txtMaKhachHang.Text = gridDS.GetFocusedRowCellValue("MaKhachHang").ToString();
                 txtTenKhachHang.Text = gridDS.GetFocusedRowCellValue("TenKhachHang").ToString();
@@ -48,7 +48,7 @@ namespace GUI
 
         private void frmQLKhachHang_Load(object sender, EventArgs e)
         {
-            xuLyControl();
+            
         }
         void xuLyControl()
         {
@@ -57,6 +57,16 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+            
+            txtTenKhachHang.Enabled = false;
+            txtDiaChi.Enabled = false;
+            txtEmail.Enabled = false;
+            txtSoDienThoai.Enabled = false;
+            txtMatKhau.Enabled = false;
+
+
+
             btnHuy.Enabled = true;
 
             txtMaKhachHang.Text = string.Empty;
@@ -96,10 +106,24 @@ namespace GUI
         {
             return phoneNumber.Length == 10 && phoneNumber.All(char.IsDigit);
         }
+
+        private string SinhMatKhauNgauNhien()
+        {
+            Random random = new Random();
+            StringBuilder matKhau = new StringBuilder();
+            for (int i = 0; i < 6; i++) 
+            {
+                int soNgauNhien = random.Next(0, 10);
+                matKhau.Append(soNgauNhien);
+            }
+            return matKhau.ToString();
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             _them = true;
             txtMaKhachHang.Text = "KH" + (bllkhachhang.GetKhachHangs().Count + 1).ToString("D3");
+            txtMatKhau.Text = SinhMatKhauNgauNhien();
             enableCacControl();
         }
 

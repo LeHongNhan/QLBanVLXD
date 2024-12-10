@@ -33,18 +33,24 @@ namespace GUI
 
         private void loginControl1_SubmitClicked(object sender, EventArgs args)
         {
-            nvLogin = bllNhanVien.checkDangNhap(loginControl1.getUsername(), loginControl1.getPassword());
-            if (nvLogin == null)
-            {
-                MessageBox.Show("Check lại tên đăng nhập, mật khẩu");
-            }
-            else
-            {
-                Program.mainForm.NV = nvLogin.MaNhanVien;
-                this.Hide();
-                Program.mainForm.Show();
-                Program.mainForm.FormClosed += (a, s) => this.Close();
-            }
+            //Program.mainForm.NV = nvLogin.MaNhanVien;
+            this.Hide();
+            Program.mainForm.Show();
+            Program.mainForm.FormClosed += (a, s) => this.Close();
+            
+            //nvLogin = bllNhanVien.checkDangNhap(loginControl1.getUsername(), loginControl1.getPassword());
+            
+            //if (nvLogin == null)
+            //{
+            //    MessageBox.Show("Check lại tên đăng nhập, mật khẩu");
+            //}
+            //else
+            //{
+            //    Program.mainForm.NV = nvLogin.MaNhanVien;
+            //    this.Hide();
+            //    Program.mainForm.Show();
+            //    Program.mainForm.FormClosed += (a, s) => this.Close();
+            //}
         }
     }
 }

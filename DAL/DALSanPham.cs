@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
@@ -18,6 +19,11 @@ namespace DAL
         {
             return vlxd.SanPhams.ToList();
         }
+        public SanPham GetSanPhamById(string maSanPham)
+        {
+            return vlxd.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
+
         public bool ThemSanPham(SanPham pSanpham)
         {
             try
@@ -67,5 +73,47 @@ namespace DAL
         {
             return vlxd.SanPhams.Where(s=>s.MaSanPham==maSanPham).FirstOrDefault();
         }
+        public SanPham GetSanPham(string maSanPham)
+        {
+            return vlxd.SanPhams.SingleOrDefault(sp => sp.MaSanPham == maSanPham);
+        }
+
+        public bool UpdateSanPham(SanPham sanPham)
+        {
+            try
+            {
+                var existingSanPham = vlxd.SanPhams.SingleOrDefault(sp => sp.MaSanPham == sanPham.MaSanPham);
+                if (existingSanPham != null)
+                {
+                    existingSanPham.SoLuongTon = sanPham.SoLuongTon;
+                    vlxd.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool CapNhatSoLuongTon(string maSanPham, int soLuongNhap)
+        {
+            try
+            {
+                var sanPham = vlxd.SanPhams.FirstOrDefault(sp => sp.MaSanPham == maSanPham);
+                if (sanPham != null)
+                {
+                    sanPham.SoLuongTon += soLuongNhap;
+                    vlxd.SubmitChanges();
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi cập nhật số lượng tồn: {ex.Message}");
+            }
+        }
+
     }
 }

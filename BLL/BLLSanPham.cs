@@ -15,11 +15,15 @@ namespace BLL
         {
 
         }
+        public SanPham GetSanPhamById(string maSanPham)
+        {
+            return dalsanpham.GetSanPhamById(maSanPham);
+        }
         public List<SanPham> GetSanPhams()
         {
             return dalsanpham.LoadSanPham();
         }
-
+        
         public bool KTKC(string maSanPham)
         {
             List<SanPham> sanPhams = GetSanPhams();
@@ -48,6 +52,10 @@ namespace BLL
         public SanPham TimKiemSPTheoMa(string pMaSanPham)
         {
             return dalsanpham.TimKiemSpTheoMa(pMaSanPham);
+        }
+        public bool CapNhatSoLuongTonKho(string pMaSanPham, int pSoLuong)
+        {
+            return dalsanpham.CapNhatSoLuongTon(pMaSanPham, pSoLuong);
         }
     }
 }

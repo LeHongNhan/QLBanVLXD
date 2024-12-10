@@ -131,13 +131,15 @@
             this.btnQLNCC.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnQLNCC.ImageOptions.SvgImage")));
             this.btnQLNCC.Name = "btnQLNCC";
             this.btnQLNCC.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQLNCC_ItemClick);
-            // 
+            
+           
             // btnPhieuNhap
             // 
             this.btnPhieuNhap.Caption = "Phiếu nhập";
             this.btnPhieuNhap.Id = 6;
             this.btnPhieuNhap.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPhieuNhap.ImageOptions.SvgImage")));
             this.btnPhieuNhap.Name = "btnPhieuNhap";
+            this.btnPhieuNhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhieuNhap_ItemClick);
             // 
             // barButtonItem4
             // 
